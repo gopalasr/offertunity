@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageViewDocument"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:src="@drawable/ic_launcher"
+            android:layout_weight="0.3" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.35"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/textViewActivityDate"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="1/18/2014 3:00-5:00"
+                tools:ignore="HardcodedText"
+                android:layout_weight="0.5"
+                android:gravity="bottom" />
+
+            <TextView
+                android:id="@+id/textViewActivityType"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="ActivityTest"
+                tools:ignore="HardcodedText"
+                android:layout_weight="0.5"
+                android:gravity="top" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.35"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/textViewSubject"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="top"
+                android:text="Grammar"
+                tools:ignore="HardcodedText,NestedWeights" />
+
+            <TextView
+                android:id="@+id/textViewUploadedBy"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:gravity="bottom"
+                android:text="Arioch"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
