@@ -3,29 +3,36 @@ package view;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.BaseAdapter;
+
+import java.text.ParseException;
 import java.util.ArrayList;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import model.Document;
+import data.ImageDownloader;
+
 import snapit.app.R;
 
 /**
  * Created by srgopalakrishnan on 5/8/14.
  */
-public class FeedCardAdapter extends BaseAdapter {
+public class    FeedCardAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private ArrayList<Document> lDocument = new ArrayList<Document>();
-
+    private final ImageDownloader mImageDownloader = new ImageDownloader();
 
     public FeedCardAdapter(Context context){
         mContext = context;
         mLayoutInflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+        mImageDownloader.setMode(ImageDownloader.Mode.CORRECT);
     }
 
     @Override
@@ -67,15 +74,18 @@ public class FeedCardAdapter extends BaseAdapter {
         String mediaUrl = lDocument.get(position).getMediaurl();
 
     System.out.println("mediaurl..."+mediaUrl);
+        mImageDownloader.download(mediaUrl, imageView);
         String subject = lDocument.get(position).getSubject();
         String activityDate = lDocument.get(position).getActivity_date();
+
         String comment = lDocument.get(position).getComment();
         String student = lDocument.get(position).getStudent();
         String uploadedDate = lDocument.get(position).getUploaded_date();
+
         String activity = lDocument.get(position).getActivity();
 
         // Construct the title string
-        String title = subject + activity + "on" + activityDate + "posted for"+student;
+        String title = subject +" "+ activity + " on " + activityDate + " posted for "+student;
         //Set post title
         titleText.setText(title);
         //set post date

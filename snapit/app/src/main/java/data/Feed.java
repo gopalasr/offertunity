@@ -32,7 +32,7 @@ import org.apache.http.util.EntityUtils;
  */
 public class Feed extends AsyncTask<Void, Void, ArrayList<Document>> {
 
-    private String SERVER_URL = "pit-drona.rhcloud.com/api/feed/user/bzadeh";
+    private String SERVER_URL = "http://snapit-drona.rhcloud.com/api/feed/user/bzadeh";
     private final FeedCardAdapter mFeedCardAdapter;
 
     public Feed(FeedCardAdapter adapter){

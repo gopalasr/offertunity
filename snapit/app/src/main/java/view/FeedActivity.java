@@ -4,7 +4,10 @@ import android.app.ListActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import data.Feed;
 import snapit.app.R;
@@ -22,7 +25,15 @@ public class FeedActivity extends ListActivity {
         Feed feed = new Feed(feedcardAdapter);
         feed.execute();
 
+        ImageButton refreshButton = (ImageButton)findViewById(R.id.refreshButton);
+        refreshButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                System.out.println("Button Clicked");
+
+            }
+        });
     }
+
 
 
     @Override

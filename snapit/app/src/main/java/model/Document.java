@@ -59,7 +59,7 @@ public class Document {
         }
         if(jsonObject.has("mediaurl") && !jsonObject.get("mediaurl").isJsonNull())
         {
-            this.mediaurl = jsonObject.get("uploaded_date").getAsString();
+            this.mediaurl = jsonObject.get("mediaurl").getAsString();
         }
     }
 
