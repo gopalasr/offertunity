@@ -1,10 +1,13 @@
 package model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.JsonObject;
 /**
  * Created by srgopalakrishnan on 5/7/14.
  */
-public class Document {
+public class Document implements Parcelable {
 
     private String activity;
     private String activity_date;
@@ -15,6 +18,38 @@ public class Document {
     private String subject;
     private String uploaded_by;
     private String uploaded_date;
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(activity);
+        parcel.writeString(activity_date);
+        parcel.writeString(comment);
+        parcel.writeString(document_id);
+        parcel.writeString(mediaurl);
+        parcel.writeString(student);
+        parcel.writeString(subject);
+        parcel.writeString(uploaded_by);
+        parcel.writeString(uploaded_date);
+
+    }
+    public Document(Parcel p){
+        setActivity(p.readString());
+        setActivity_date(p.readString());
+        setComment(p.readString());
+        setDocument_id(p.readString());
+        setMediaurl(p.readString());
+        setStudent(p.readString());
+        setSubject(p.readString());
+        setUploaded_by(p.readString());
+        setUploaded_date(p.readString());
+    }
+
+
 
 
     public Document(JsonObject jsonObject)
@@ -134,4 +169,20 @@ public class Document {
     public void setActivity(String activity) {
         this.activity = activity;
     }
+
+    public static final Parcelable.Creator<Document> CREATOR = new Creator<Document>() {
+
+        public Document createFromParcel(Parcel source) {
+
+            return new Document(source);
+        }
+
+        public Document[] newArray(int size) {
+
+            return new Document[size];
+        }
+
+    };
+
+
 }

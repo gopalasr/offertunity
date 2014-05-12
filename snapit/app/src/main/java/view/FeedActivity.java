@@ -1,15 +1,21 @@
 package view;
 
 import android.app.ListActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.content.Intent;
+
+import java.io.Serializable;
 
 import data.Feed;
+import model.Document;
 import snapit.app.R;
 
 public class FeedActivity extends ListActivity {
@@ -19,7 +25,7 @@ public class FeedActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feed_activity);
 
-        FeedCardAdapter feedcardAdapter = new FeedCardAdapter(this);
+        final FeedCardAdapter feedcardAdapter = new FeedCardAdapter(this);
         setListAdapter(feedcardAdapter);
 
         Feed feed = new Feed(feedcardAdapter);
@@ -29,7 +35,22 @@ public class FeedActivity extends ListActivity {
         refreshButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 System.out.println("Button Clicked");
+                new Feed(feedcardAdapter).execute();
+            }
+        });
 
+        ListView feedActivityList = (ListView) findViewById(android.R.id.list);
+        feedActivityList.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println("List Item Clicked");
+                Document document = (Document) parent.getItemAtPosition(position);
+                //Intent myIntent = new Intent(ChallengesList.this, Challengeview.class);
+                //ChallengesList.this.startActivity(myIntent);
+                Intent i = new Intent(getApplicationContext(), ImageActivity.class);
+                //i.putExtra("object",document);
+                i.putExtra("documentobject", document);
+                startActivity(i);
             }
         });
     }
